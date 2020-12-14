@@ -1,11 +1,14 @@
-import React from 'react';
+import React,{useContext} from 'react';
 import Day from './Day'
+import Context from "../Context"
 
-const Days = ({ days }) => {
+const Days = () => {
+const {days}=useContext(Context);
   if (days) {
     return (
       <>
       <div className="days">
+        {console.log(days)}
         {days.response.map((day, i) => (
           <span className='day' key={i}>
             <Day dayData={day}/>
