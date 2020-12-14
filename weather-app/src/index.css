@@ -83,6 +83,7 @@ body{
   background: #4a77b6;
   transition: 0.4s;
   border: none;
+  outline: none;
 }
 .searchBox:hover > .searchInput {
   width: 100px;
@@ -90,6 +91,7 @@ body{
 }
 .searchBox:hover > ::placeholder {
   color: white;
+  opacity: 0.5;
 }
 
 .searchBox:hover > .searchButton {
@@ -107,6 +109,9 @@ text-align: center;
   font-family: 'Space Grotesk', sans-serif;
   font-size: 0.9em;
   padding: 1rem 1rem;
+}
+.day p{
+  padding-bottom: 0.5rem;
 }
 img {
   height: 80px;

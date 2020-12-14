@@ -7,7 +7,7 @@ import Days from './Days';
 
 const Container = () => {
   const [weather, setWeather] = useState();
-
+  
   const api_call = async (e) => {
     e.preventDefault();
     let response = [];
@@ -18,9 +18,10 @@ const Container = () => {
       url = `https://api.ipma.pt/open-data/forecast/meteorology/cities/daily/hp-daily-forecast-day${day}.json`;
       request = axios.get(url);
       const answer = await request;
-      response.push(
-        answer.data.data.filter((city) => city.globalIdLocal === 1151200)[0]
-      );
+      const date=answer.data.forecastDate;
+      var temp=answer.data.data.filter((city) => city.globalIdLocal === 1151200)[0];
+      temp = { ...temp, date};
+      response.push(temp);
       setWeather({response});
 
       day++;
@@ -32,7 +33,7 @@ const Container = () => {
     
   // }
   //weather.map(x=>(console.log(x)))
-  console.log(weather);
+  //console.log(weather);
   //  useEffect( (e) => {
   //    api_call();
   //  }, []);

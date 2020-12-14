@@ -1,15 +1,14 @@
 import React from 'react';
-import dayPic from '../assets/day.svg'
+import Day from './Day'
 
 const Days = ({ days }) => {
   if (days) {
     return (
       <>
-      <div class="days">
+      <div className="days">
         {days.response.map((day, i) => (
           <span className='day' key={i}>
-            <img src={dayPic} alt='day' />
-            <p>Min: {day.tMin} Max: {day.tMax}</p>
+            <Day dayData={day}/>
           </span>
          
         ))}
