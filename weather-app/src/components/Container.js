@@ -7,6 +7,11 @@ import Content from './Content';
 import WeatherSearch from './WeatherSearch';
 import Days from './Days';
 
+const initialState = {
+  weather: null,
+  city: null,
+};
+
 const Container = () => {
   const [weather, setWeather] = useState();
   const [city, setCity] = useState();
@@ -14,8 +19,8 @@ const Container = () => {
     e.preventDefault();
     const distrito = e.target.elements.distrito.value;
     const idLocal = getIdLocal(distrito);
-    console.log(idLocal);
     if (idLocal) {
+      setCity(distrito);
       let response = [];
       let url = null;
       let request = null;
@@ -31,20 +36,24 @@ const Container = () => {
         temp = { ...temp, date };
         response.push(temp);
         setWeather({ response });
-
         day++;
       }
+    } else {
+      setWeather(initialState.weather);
+      setCity(initialState.city);
     }
   };
   return (
     <div className='container'>
-      <Header />
-      <Content>
-        <Context.Provider value={{ api_call: api_call, days: weather }}>
+      <Context.Provider
+        value={{ api_call: api_call, days: weather, city: city }}
+      >
+        <Header />
+        <Content>
           <WeatherSearch />
-          <Days />
-        </Context.Provider>
-      </Content>
+          {weather && <Days />}
+        </Content>
+      </Context.Provider>
     </div>
   );
 
