@@ -1,7 +1,6 @@
 import React from 'react';
 
 const WeatherSearch = (props) => {
-  //console.log(props)
   return (
     <div className='weatherSearch'>
       <form onSubmit={props.api_call}  className='searchBox'>
