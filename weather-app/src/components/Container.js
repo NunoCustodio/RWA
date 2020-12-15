@@ -6,6 +6,7 @@ import Header from './Header';
 import Content from './Content';
 import WeatherSearch from './WeatherSearch';
 import Days from './Days';
+import Footer from './Footer';
 
 const initialState = {
   weather: null,
@@ -53,12 +54,12 @@ const Container = () => {
           <WeatherSearch />
           {weather && <Days />}
         </Content>
+        <Footer />
       </Context.Provider>
     </div>
   );
 
   function getIdLocal(distrito) {
-    console.log(`Distrito IN - ${distrito}`);
     const distritos = [
       { globalIdLocal: 1010500, local: 'Aveiro' },
       { globalIdLocal: 1020500, local: 'Beja' },

@@ -1,21 +1,19 @@
-import React,{useContext} from 'react';
-import Day from './Day'
-import Context from "../Context"
+import React, { useContext } from 'react';
+import Day from './Day';
+import Context from '../Context';
 
 const Days = () => {
-const {days}=useContext(Context);
+  const { days } = useContext(Context);
   if (days) {
     return (
       <>
-      <div className="days">
-        {console.log(days)}
-        {days.response.map((day, i) => (
-          <span className='day' key={i}>
-            <Day dayData={day}/>
-          </span>
-         
-        ))}
-         </div>
+        <div className='days'>
+          {days.response.map((day, i) => (
+            <span className='day' key={i}>
+              <Day dayData={day} />
+            </span>
+          ))}
+        </div>
       </>
     );
   }
